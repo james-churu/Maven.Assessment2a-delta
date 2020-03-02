@@ -1,4 +1,7 @@
 package rocks.zipcode.assessment2.fundamentals;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  * @author leon on 28/11/2018.
@@ -10,7 +13,15 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by left-padding
      */
     public static String padLeft(String stringToBePadded, int amountOfPadding) {
-        return null;
+        String padded = "";
+
+        int remainingPads = amountOfPadding - stringToBePadded.length();
+
+        for(int x = 1; x<= remainingPads; x++){
+            padded += " ";
+        }
+        padded += stringToBePadded;
+        return padded;
     }
 
     /**
@@ -19,7 +30,15 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by right-padding
      */
     public static String padRight(String stringToBePadded, int amountOfPadding) {
-        return null;
+        String padded = "";
+        padded += stringToBePadded;
+        int remainingPads = amountOfPadding - stringToBePadded.length();
+
+        for(int x = 1; x<= remainingPads; x++){
+            padded += " ";
+        }
+
+        return padded;
     }
 
     /**
@@ -28,7 +47,12 @@ public class StringUtils {
      * @return the string repeated and concatenated `n` times
      */
     public static String repeatString(String stringToBeRepeated, int numberOfTimeToRepeat) {
-        return null;
+        String repeated = "";
+        for(int x = 1; x <= numberOfTimeToRepeat; x++){
+            repeated += stringToBeRepeated;
+        }
+
+        return repeated;
     }
 
     /**
@@ -36,7 +60,19 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-        return null;
+        boolean allIsUpper = true;
+
+        for(int x = 0; x <= string.length() -1; x++){
+            if(string.charAt(x) == ' '){
+
+            }
+            else if ((Character.isLetter(string.charAt(x)) == false)) {
+                allIsUpper = false;
+                break;
+            }
+        }
+
+        return allIsUpper;
     }
 
     /**
@@ -44,7 +80,19 @@ public class StringUtils {
      * @return - true if string only contains numeric characters
      */
     public static Boolean isNumericString(String string) {
-        return null;
+        boolean allIsNumeric = true;
+
+        for(int x = 0; x <= string.length() -1; x++){
+            if(string.charAt(x) == ' '){
+                allIsNumeric = false;
+                break;
+            }else if ((Character.isDigit(string.charAt(x)) == false)) {
+                allIsNumeric = false;
+                break;
+            }
+        }
+
+        return allIsNumeric;
     }
 
     /**
@@ -52,6 +100,14 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        return null;
+        if(isAlphaString(string)){
+            return false;
+        } else if(isNumericString(string)){
+            return false;
+        }else{
+            return true;
+        }
     }
+
 }
+
