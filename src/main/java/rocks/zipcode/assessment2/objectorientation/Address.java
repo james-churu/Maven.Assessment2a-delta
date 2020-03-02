@@ -79,6 +79,10 @@ public class Address {
     @Override
     public boolean equals(Object o) {
 
-        return this.equals(o);
+        if(o.equals(addressLine1)){
+            return this.addressLine1.equals(o);
+        }else {
+            return this.addressLine2.equals(o);
+        }
     }
 }

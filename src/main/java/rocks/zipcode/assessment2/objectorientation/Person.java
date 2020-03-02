@@ -19,14 +19,14 @@ public class Person {
         this.address = address;
     }
 
-    public Person() {
+    public Person(){
         this.id = Long.MIN_VALUE;
         this.name = "";
         this.address = new Address();
     }
 
     public Long getId() {
-        return (Long)this.id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -51,6 +51,18 @@ public class Person {
 
     @Override
     public boolean equals(Object o) {
-        return this.equals(o);
+        if(o.equals(this.id)){
+            return true;
+        }else if(((String)o).equals(this.name)){
+            return true;
+        }else if(((String)o).equals(this.address)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    @Override
+    public String toString(){
+        return "Person{id="+this.id+", name="+this.getName()+", address="+this.address.getAddressLine1()+", addressLine2="+this.address.getAddressLine2()+" city="+this.address.getCity()+" state="+this.address.getState()+", zipcode="+this.address.getZipcode()+"}}";
     }
 }
